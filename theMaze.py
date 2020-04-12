@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import os
 import sys
 import math
@@ -5,6 +7,7 @@ import time
 import pygame
 current_path = os.getcwd()
 import pymunk as pm
+import objectRecognition
 
 def drawScenario(screen, colors):
     screen.fill(colors['white'])
@@ -126,7 +129,7 @@ def main():
     blue = (0,0,255)
     colors = dict(white = white, black = black, red = red, green = green, yellow = yellow, blue = blue)
     pygame.init()
-    screen = pygame.display.set_mode((1200, 650))
+    screen = pygame.display.set_mode((398, 398))
     pygame.display.set_caption('The Maze')
     gameExit = False
     while not gameExit:
@@ -134,13 +137,14 @@ def main():
             if event.type == pygame.QUIT:
                 gameExit = True
         drawScenario(screen, colors)
-        x, y = pygame.mouse.get_pos()
+        x, y = objectRecognition.getPosition()
         canPlay = isAValidMove(x, y, size, canPlay)
         if(canPlay):
-            if(increaseSize(x, y, size) == 1):
-                size = size + 0.025
-            elif(increaseSize(x, y, size) == 2):
-                size = size + 0.05
+            print('melo')
+            #if(increaseSize(x, y, size) == 1):
+            #    size = size + 0.025
+            #elif(increaseSize(x, y, size) == 2):
+            #    size = size + 0.05
             pygame.draw.circle(screen, red, (x, y), size)
             if(didWin(x, y, size)):
                 win = True
