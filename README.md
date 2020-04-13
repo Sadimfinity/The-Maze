@@ -7,10 +7,11 @@ The Maze (The Game)
 Requirements
 ------------
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 To play
 -------
 1. Clone the project.
-2. `python theMaze.py`
+2. Open the src folder.
+3. `python theMaze.py`
