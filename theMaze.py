@@ -120,6 +120,16 @@ def initializeColors():
     colors = dict(white = white, black = black, red = red, green = green, yellow = yellow, blue = blue)
     return colors
 
+def start(screen):
+    font = pygame.font.SysFont("Helvetica", 36)            
+    text = font.render("¡Prueba tu pulso!", True, (0, 0, 0))
+    text1 = font.render("Ingrese llave para iniciar el juego", True, (0, 0, 0))
+    text2 = font.render("el juego", True, (0,0,0))            
+    screen.blit(text, (315 -text1.get_width() // 2, 145 - text1.get_height() // 2))
+    screen.blit(text1, (265 -text1.get_width() // 2, 195 - text1.get_height() // 2))
+    screen.blit(text2, (400 -text1.get_width() // 2, 245 - text1.get_height() // 2))
+    pygame.display.flip()
+
 def main(win):
     size = 5
     canPlay = False
@@ -136,14 +146,7 @@ def main(win):
             if event.type == pygame.QUIT:
                 gameExit = True
         if(not startGame):
-            font = pygame.font.SysFont("Helvetica", 36)            
-            text = font.render("¡Prueba tu pulso!", True, (0, 0, 0))
-            text1 = font.render("Ingrese llave para iniciar el juego", True, (0, 0, 0))
-            text2 = font.render("el juego", True, (0,0,0))            
-            screen.blit(text, (315 -text1.get_width() // 2, 145 - text1.get_height() // 2))
-            screen.blit(text1, (265 -text1.get_width() // 2, 195 - text1.get_height() // 2))
-            screen.blit(text2, (400 -text1.get_width() // 2, 245 - text1.get_height() // 2))
-            pygame.display.flip()
+            start(screen)
         else:
             drawScenario(screen, colors)
         _, frame = cap.read()
@@ -156,7 +159,6 @@ def main(win):
         _, contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)    
         for contour in contours:
             area = cv2.contourArea(contour)
-            print(area)
             if( area > 700 and area < 2000):
                 startGame = True
                 cv2.drawContours(frame, contours, -1, (0,0,255), 3)
@@ -187,7 +189,7 @@ def main(win):
         screen.fill((255,255,255))
         font = pygame.font.SysFont("Helvetica", 72)
         winText = font.render("¡Ganaste!", True, (0, 0, 0))
-        screen.blit(winText, (280 -text1.get_width() // 2, 175 - text1get_height() // 2))
+        screen.blit(winText, (205 - winText.get_width() // 2, 185 - winText.get_height() // 2))
         pygame.display.flip()
         pygame.time.delay(10000)
     
