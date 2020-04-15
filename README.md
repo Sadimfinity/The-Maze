@@ -1,6 +1,6 @@
 The Maze (The Game)
 ===================
-[Youtube Video](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[Youtube Video](https://youtu.be/K1YVI7e2D2I)
 
 ![Alt text](/resources/the-maze-image.png?raw=true "The maze")
 
